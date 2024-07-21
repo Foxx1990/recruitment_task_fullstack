@@ -1,6 +1,6 @@
 exchange_rates:
     path: /api/exchange-rates/{date}
-    controller: App\Controller\ExchangeRatesController::getRates
+    controller: App\Controller\ExchangeRateController::getExchangeRates
     methods: GET
     requirements:
         date: '\d{4}-\d{2}-\d{2}'
