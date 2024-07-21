@@ -19,9 +19,13 @@ class ExchangeRateController extends AbstractController
     /**
      * @Route("/api/exchange-rates/{date}", name="get_exchange_rates", methods={"GET"})
      */
-    public function getExchangeRates(Request $request, $date): JsonResponse
+    public function getExchangeRates($date): JsonResponse
     {
-        $rates = $this->exchangeRateService->getRatesByDate($date);
-        return new JsonResponse($rates);
+        try {
+            $rates = $this->exchangeRateService->getRatesByDate($date);
+            return new JsonResponse($rates);
+        } catch (\InvalidArgumentException $e) {
+            return new JsonResponse(['error' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
+        }
     }
 }

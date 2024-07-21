@@ -39,3 +39,4 @@ services:
         arguments:
             $httpClient: '@http_client'
     App\Factory\ExchangeRateFactory: ~
+    App\Validator\DateValidator: ~
